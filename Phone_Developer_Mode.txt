@@ -1,0 +1,21 @@
+Connect Your Phone to Qt Creator
+Step 1 — Enable Developer Mode on your phone
+
+Go to Settings → About Phone
+Tap "MIUI Version" 7 times rapidly
+You'll see "You are now a developer"
+
+Step 2 — Enable USB Debugging
+
+Go to Settings → Additional Settings → Developer Options
+Enable "USB Debugging"
+Also enable "Install via USB"
+
+Step 3 — Connect via USB
+
+Plug phone into PC with a USB cable
+On your phone, tap "Allow" when the USB debugging prompt appears
+Select "File Transfer (MTP)" mode for the USB connection
+
+Step 4 — Qt Creator
+Your phone should now appear in the bottom-left device selector instead of the emulator.
