@@ -1,0 +1,67 @@
+RoboNet/
+│
+├── docs/                          ← All documentation
+│   ├── RoboNet_Project.md         ← Main project description
+│   ├── RoboNet_ProjectTracker.xlsx
+│   ├── architecture/              ← Diagrams (draw.io, PNG exports)
+│   │   ├── system_overview.drawio
+│   │   └── can_network.drawio
+│   └── datasheets/                ← ESP32-S3, sensors PDFs
+│
+├── mobile/                        ← Qt 6 Android app (Phase 1)
+│   ├── QtRobotMobile/
+│   │   ├── CMakeLists.txt
+│   │   ├── main.cpp
+│   │   ├── SensorManager.h
+│   │   ├── SensorManager.cpp
+│   │   ├── BleController.h
+│   │   ├── BleController.cpp
+│   │   └── qml/
+│   │       ├── main.qml
+│   │       ├── Dashboard.qml
+│   │       └── ConnectionPanel.qml
+│
+├── desktop/                       ← Qt 6 PC app (Phase 2 + 3)
+│   └── QtRobotDesktop/
+│       ├── CMakeLists.txt
+│       ├── main.cpp
+│       ├── RobotController.h
+│       ├── RobotController.cpp
+│       ├── CanDashboard.h
+│       ├── CanDashboard.cpp
+│       └── qml/
+│           ├── main.qml
+│           ├── ControlPanel.qml
+│           └── SensorDashboard.qml
+│
+├── firmware/                      ← All ESP32-S3 ESP-IDF projects
+│   ├── robot/                     ← Robot ESP32-S3 (Phase 1 + 2)
+│   │   ├── main/
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── main.c
+│   │   │   ├── ble_server.c
+│   │   │   ├── ble_server.h
+│   │   │   ├── wifi_server.c
+│   │   │   ├── wifi_server.h
+│   │   │   ├── motor_control.c
+│   │   │   ├── motor_control.h
+│   │   │   └── command_parser.c
+│   │   ├── CMakeLists.txt
+│   │   └── sdkconfig
+│   │
+│   ├── can_node_a/                ← Humidity sensor node (Phase 3)
+│   │   ├── main/
+│   │   ├── CMakeLists.txt
+│   │   └── sdkconfig
+│   │
+│   ├── can_node_b/                ← Relay + switch node (Phase 3)
+│   │   ├── main/
+│   │   ├── CMakeLists.txt
+│   │   └── sdkconfig
+│   │
+│   └── can_node_c/                ← WiFi gateway node (Phase 3)
+│       ├── main/
+│       ├── CMakeLists.txt
+│       └── sdkconfig
+│
+└── .gitignore                     ← Ignore build artifacts

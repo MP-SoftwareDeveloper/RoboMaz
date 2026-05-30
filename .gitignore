@@ -1,0 +1,26 @@
+# Qt build artifacts
+build/
+*.pro.user
+CMakeCache.txt
+CMakeFiles/
+*.autosave
+
+# ESP-IDF build artifacts
+firmware/*/build/
+firmware/*/managed_components/
+firmware/*/.espressif/
+sdkconfig.old
+
+# Android
+*.apk
+*.aab
+android/build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docs
+*.tmp
+~$*.xlsx
