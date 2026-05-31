@@ -12,13 +12,17 @@ endif()
 
 qt_add_executable(appMobileApp
     main.cpp
-    flashlightcontroller.h
+    peripherals/flashlight/FlashlightController.h
 )
 
 qt_add_qml_module(appMobileApp
     URI MobileApp
     QML_FILES
-        Main.qml
+        qml/Main.qml
+        qml/Dashboard.qml
+        qml/FlashlightPage.qml
+        qml/BluetoothPage.qml
+        qml/GyroscopePage.qml
 )
 
 set_target_properties(appMobileApp PROPERTIES
@@ -28,16 +32,22 @@ set_target_properties(appMobileApp PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+target_include_directories(appMobileApp PRIVATE
+    peripherals/flashlight
+)
+
 target_link_libraries(appMobileApp
     PRIVATE Qt6::Quick Qt6::Core Qt6::Gui
 )
+
 if(ANDROID)
     set_target_properties(appMobileApp PROPERTIES
         QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
     )
 endif()
+
 install(TARGETS appMobileApp
     BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
