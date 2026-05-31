@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls.Basic
 import QtQuick.VirtualKeyboard
 
@@ -7,43 +6,54 @@ Window {
     id: window
     width: Screen.width
     height: Screen.height
-    minimumWidth: 150
-    minimumHeight: 250
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("RoboNet Mobile")
 
-    // Add a visible background
     Rectangle {
         anchors.fill: parent
-        color: "steelblue"   // ← any color, just to confirm rendering works
+        color: "#1a1a2e"
 
-        Text {
+        Column {
             anchors.centerIn: parent
-            text: "Hello from Qt To Maz!"
-            color: "white"
-            font.pixelSize: 30
-        }
-    }
+            spacing: 40
 
-    InputPanel {
-        id: inputPanel
-        z: 99
-        y: window.height
-        width: window.width
-        states: State {
-            name: "visible"
-            when: inputPanel.active
-            PropertyChanges {
-                inputPanel.y: window.height - inputPanel.height
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Flashlight Test"
+                color: "white"
+                font.pixelSize: 32
             }
-        }
-        transitions: Transition {
-            from: ""
-            to: "visible"
-            reversible: true
-            NumberAnimation {
-                properties: "y"
-                easing.type: Easing.InOutQuad
+
+            // Simple visible button
+            Rectangle {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 200
+                height: 80
+                radius: 10
+                color: "orange"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "TOGGLE FLASH"
+                    color: "black"
+                    font.pixelSize: 24
+                    font.bold: true
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("Button clicked!")
+                        flashlight.toggle()
+                    }
+                }
+            }
+
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Status: " + (flashlight.flashOn ? "ON" : "OFF")
+                color: "yellow"
+                font.pixelSize: 28
             }
         }
     }
