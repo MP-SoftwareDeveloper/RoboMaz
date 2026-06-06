@@ -1,15 +1,14 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
 #include <QQuickWindow>
 #include <QSGRendererInterface>
+#include <QQmlContext>
 #include "FlashlightController.h"
 
 int main(int argc, char *argv[])
 {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
     qputenv("QT_ANDROID_NO_EXIT_CALL", "1");
-    QQuickWindow::setGraphicsApi(QSGRendererInterface::VulkanRhi);
 
     QGuiApplication app(argc, argv);
 

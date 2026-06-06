@@ -72,7 +72,7 @@ Rectangle {
 
             Text {
                 anchors.centerIn: parent
-                text: "Blink 3×"
+                text: "Blink"
                 color: "white"
                 font.pixelSize: 24
                 font.bold: true

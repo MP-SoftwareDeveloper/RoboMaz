@@ -38,6 +38,7 @@
         <item>arm64-v8a;libplugins_platforms_qtforandroid_arm64-v8a.so</item>
     </array>
 
+    <string name="main_library_name">appMobileApp</string>
     <string name="use_local_qt_libs">1</string>
     <string name="bundle_local_qt_libs">1</string>
     <string name="system_libs_prefix"></string>
