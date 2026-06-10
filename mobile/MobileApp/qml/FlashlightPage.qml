@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls.Basic
 
 Rectangle {
-    anchors.fill: parent
+    // StackLayout sizes this item — do NOT use anchors.fill: parent
     color: "#1a1a2e"
 
     Column {

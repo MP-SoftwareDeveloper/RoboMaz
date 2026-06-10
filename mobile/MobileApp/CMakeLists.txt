@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 project(MobileApp VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui)
+find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui Sensors)
+find_package(Qt6 OPTIONAL_COMPONENTS Bluetooth QUIET)
 
 qt_standard_project_setup(REQUIRES 6.10)
 
@@ -13,6 +14,10 @@ endif()
 qt_add_executable(appMobileApp
     main.cpp
     peripherals/flashlight/FlashlightController.h
+    peripherals/bluetooth/BluetoothController.h
+    peripherals/bluetooth/BluetoothController.cpp
+    peripherals/sensors/SensorController.h
+    peripherals/sensors/SensorController.cpp
 )
 
 qt_add_qml_module(appMobileApp
@@ -21,8 +26,9 @@ qt_add_qml_module(appMobileApp
         qml/Main.qml
         qml/Dashboard.qml
         qml/FlashlightPage.qml
-        qml/BluetoothPage.qml
         qml/GyroscopePage.qml
+        qml/CompassPage.qml
+        qml/BluetoothPage.qml
 )
 
 set_target_properties(appMobileApp PROPERTIES
@@ -34,15 +40,29 @@ set_target_properties(appMobileApp PROPERTIES
 
 target_include_directories(appMobileApp PRIVATE
     peripherals/flashlight
+    peripherals/bluetooth
+    peripherals/sensors
 )
 
 target_link_libraries(appMobileApp
-    PRIVATE Qt6::Quick Qt6::Core Qt6::Gui
+    PRIVATE Qt6::Quick Qt6::Core Qt6::Gui Qt6::Sensors
 )
+
+if(Qt6Bluetooth_FOUND)
+    target_link_libraries(appMobileApp PRIVATE Qt6::Bluetooth)
+    target_compile_definitions(appMobileApp PRIVATE HAS_QT_BLUETOOTH)
+    message(STATUS "Qt Bluetooth found — BT scanning enabled")
+else()
+    message(STATUS "Qt Bluetooth NOT installed — BT page disabled.")
+endif()
 
 if(ANDROID)
     set_target_properties(appMobileApp PROPERTIES
         QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
+    )
+    set_property(TARGET appMobileApp APPEND PROPERTY
+        QT_ANDROID_EXTRA_PLUGINS
+        "${Qt6_DIR}/../../../qml/QtQuick/VirtualKeyboard"
     )
 endif()
 
