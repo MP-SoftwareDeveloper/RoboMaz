@@ -63,6 +63,10 @@ if(ANDROID)
     set_property(TARGET appMobileApp APPEND PROPERTY
         QT_ANDROID_EXTRA_PLUGINS
         "${Qt6_DIR}/../../../qml/QtQuick/VirtualKeyboard"
+        # Force sensor backend plugins into load_local_libs so the Android
+        # runtime System.loadLibrary()'s them before Qt's plugin scanner runs.
+        # Without this, Qt6Sensors is absent from libs.xml → types:0 backends:0.
+        "${Qt6_DIR}/../../../plugins/sensors"
     )
 endif()
 

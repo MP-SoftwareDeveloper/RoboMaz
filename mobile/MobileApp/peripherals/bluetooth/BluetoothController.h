@@ -33,18 +33,24 @@ signals:
     void devicesChanged();
     void statusChanged();
 
-#ifdef HAS_QT_BLUETOOTH
 private slots:
+#ifdef Q_OS_ANDROID
+    void onPermissionResult();
+#endif
+#ifdef HAS_QT_BLUETOOTH
+    void doStartScan();
     void onDeviceDiscovered(const QBluetoothDeviceInfo &device);
     void onScanFinished();
     void onScanError(QBluetoothDeviceDiscoveryAgent::Error error);
-private:
-    QBluetoothDeviceDiscoveryAgent *m_agent = nullptr;
-    QBluetoothLocalDevice          *m_local = nullptr;
 #endif
 
 private:
     bool        m_scanning = false;
     QStringList m_devices;
     QString     m_status;
+
+#ifdef HAS_QT_BLUETOOTH
+    QBluetoothDeviceDiscoveryAgent *m_agent = nullptr;
+    QBluetoothLocalDevice          *m_local = nullptr;
+#endif
 };

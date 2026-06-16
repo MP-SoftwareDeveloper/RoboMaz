@@ -18,6 +18,24 @@ Item {
             font.bold: true
         }
 
+        // ── Sensor status indicator ───────────────────────────────────────────────
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 6
+            Rectangle {
+                width: 8; height: 8; radius: 4
+                color: sensors.sensorsActive ? "#4CAF50" : "#F44336"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Text {
+                text: sensors.sensorsActive ? "Accelerometer active" : sensors.statusText
+                color: sensors.sensorsActive ? "#4CAF50" : "#F44336"
+                font.pixelSize: 10
+                wrapMode: Text.WordWrap
+                width: 260
+            }
+        }
+
         // ── Artificial horizon (pure QML — no Canvas) ─────────────────────────────
         Item {
             id: horizonView
@@ -62,21 +80,26 @@ Item {
                 }
             }
 
-            // Fixed aircraft reference lines
+            // Fixed aircraft reference lines (left wing, right wing, centre dot)
+            // Use explicit x/y — cannot mix anchors.centerIn with x/y
             Rectangle {
-                anchors.centerIn: parent
-                width: 80; height: 3
-                x: parent.width / 2 - 70
+                // Left wing bar
+                x: horizonView.width / 2 - 80
+                y: horizonView.height / 2 - 1
+                width: 70; height: 3
                 color: "#FFD700"
             }
             Rectangle {
-                anchors.centerIn: parent
-                width: 80; height: 3
-                x: parent.width / 2 - 10
+                // Right wing bar
+                x: horizonView.width / 2 + 10
+                y: horizonView.height / 2 - 1
+                width: 70; height: 3
                 color: "#FFD700"
             }
             Rectangle {
-                anchors.centerIn: parent
+                // Centre dot
+                x: horizonView.width  / 2 - 5
+                y: horizonView.height / 2 - 5
                 width: 10; height: 10; radius: 5
                 color: "#FFD700"
             }
