@@ -5,6 +5,10 @@
 CONFIG_ESP_CONSOLE_USB_CDC=y
 CONFIG_ESP_CONSOLE_UART_NONE=y
 
+# ── FreeRTOS ───────────────────────────────────────────────────────────────────
+# Arduino component requires 1000 Hz tick rate.
+CONFIG_FREERTOS_HZ=1000
+
 # ── CPU frequency ──────────────────────────────────────────────────────────────
 # The WS2812 bit-bang timing in MAZLed.cpp is calculated for 240 MHz.
 # If you change this, update MAZLed::kCpuMhz to match.

@@ -1,0 +1,20 @@
+# ESP-IDF build output
+build/
+sdkconfig
+dependencies.lock
+managed_components/
+
+# VS Code — machine-specific overrides
+# settings.json is tracked (shared IDF config); add local overrides to settings.local.json
+.vscode/*.log
+.vscode/launch.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
