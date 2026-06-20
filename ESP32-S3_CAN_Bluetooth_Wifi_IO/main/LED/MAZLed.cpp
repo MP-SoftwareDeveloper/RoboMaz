@@ -60,7 +60,7 @@ void MAZLed::pinModeOutput(uint8_t pin)
 
     // 3. Enable output driver
     if (pin < 32) {
-        GPIO.enable_w1ts.val = (1u << pin);
+        GPIO.enable_w1ts = (1u << pin);
     } else {
         GPIO.enable1_w1ts.val = (1u << (pin - 32u));
     }
@@ -70,7 +70,7 @@ void MAZLed::pinModeOutput(uint8_t pin)
 void MAZLed::pinHigh(uint8_t pin)
 {
     if (pin < 32) {
-        GPIO.out_w1ts.val = (1u << pin);
+        GPIO.out_w1ts = (1u << pin);
     } else {
         GPIO.out1_w1ts.val = (1u << (pin - 32u));
     }
@@ -80,7 +80,7 @@ void MAZLed::pinHigh(uint8_t pin)
 void MAZLed::pinLow(uint8_t pin)
 {
     if (pin < 32) {
-        GPIO.out_w1tc.val = (1u << pin);
+        GPIO.out_w1tc = (1u << pin);
     } else {
         GPIO.out1_w1tc.val = (1u << (pin - 32u));
     }
