@@ -4,4 +4,6 @@ idf_component_register(
         "LED/MAZLed.cpp"
     INCLUDE_DIRS
         "."
+    REQUIRES
+        led_strip
 )
