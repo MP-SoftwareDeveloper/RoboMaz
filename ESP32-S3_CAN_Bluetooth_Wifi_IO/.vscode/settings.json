@@ -1,0 +1,11 @@
+{
+  "idf.espIdfPath": "C:\\esp\\v6.0\\esp-idf",
+  "idf.toolsPath": "C:\\Espressif",
+  "idf.pythonBinPath": "C:\\Espressif\\python_env\\idf6.0_py3.13_env\\Scripts\\python.exe",
+  "idf.customExtraPaths": "C:\\Espressif\\tools\\xtensa-esp-elf\\bin;C:\\Espressif\\tools\\riscv32-esp-elf\\bin;C:\\Espressif\\tools\\cmake\\bin;C:\\Espressif\\tools\\ninja;C:\\Espressif\\tools\\ccache;C:\\Espressif\\tools\\openocd-esp32\\bin;C:\\Espressif\\tools\\dfu-util\\bin",
+  "idf.adapterTargetName": "esp32s3",
+  "cmake.configureOnOpen": true,
+  "idf.flashType": "UART",
+"python-envs.defaultEnvManager": "ms-python.python:system",
+"idf.portWin": "COM4"
+}

@@ -1,0 +1,12 @@
+# ── Console ────────────────────────────────────────────────────────────────────
+# Route ESP-IDF log output to the USB-CDC (OTG) port so GPIO43 / GPIO44
+# are fully free to be driven as bare-metal GPIO outputs for the TX / RX LEDs.
+# Flash via the LEFT USB-C (CH343P).  Open the serial monitor on the RIGHT USB-C.
+CONFIG_ESP_CONSOLE_USB_CDC=y
+CONFIG_ESP_CONSOLE_UART_NONE=y
+
+# ── CPU frequency ──────────────────────────────────────────────────────────────
+# The WS2812 bit-bang timing in MAZLed.cpp is calculated for 240 MHz.
+# If you change this, update MAZLed::kCpuMhz to match.
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ=240
